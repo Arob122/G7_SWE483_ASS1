@@ -17,7 +17,7 @@ import com.example.ass1.R;
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
-    TextView textView,monnth1,daay1,hourrs1,miins1,yeear1;
+    TextView Title1,monnth1,day1,hour1,min1,yeear1;
     EditText Title;
     Button Pickbutton;
     int day, month, year, hour, minute;
@@ -27,13 +27,13 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.textView);
+        Title1 = findViewById(R.id.Title);
         Pickbutton = findViewById(R.id.btnPick);
-        Title=findViewById(R.id.Title);
-       monnth1=findViewById(R.id.monnth);
-       // daay1=findViewById(R.id.daay);
-       // hourrs1=findViewById(R.id.hourrs);
-       // miins1=findViewById(R.id.miins);
+        Title=findViewById(R.id.textE);
+        monnth1=findViewById(R.id.monnth);
+        day1=findViewById(R.id.day);
+        hour1=findViewById(R.id.hour);
+        min1=findViewById(R.id.min);
         yeear1=findViewById(R.id.yeear);
         enteredTitle = Title.getText().toString();
 
@@ -65,16 +65,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         myHour = hourOfDay;
         myMinute = minute;
-        textView.setText(myYear+ "\n" +
-                "Month: " + myMonth + "\n" +
-                "Day: " + myday + "\n" +
-                "Hour: " + myHour + "\n" +
-                "Minute: " + myMinute);
+        yeear1.setText(myYear+ "\n" );
+        monnth1.setText( myMonth + "\n") ;
+        day1.setText( myday + "\n") ;
+        hour1.setText( myHour + "\n") ;
+        min1.setText( myMinute + "\n") ;
+        // "Day: " + myday + "\n" +
+        // "Hour: " + myHour + "\n" +
+        // "Minute: " + myMinute);
         /*yeear1.setText(myYear);
         monnth1.setText(myMonth);
         daay1.setText(myday);
         hourrs1.setText(myHour);
-        miins1.setText(myMinute);
-        Title.setText(enteredTitle);*/
+        miins1.setText(myMinute);*/
+        Title1.setText(enteredTitle);
     }
 }
