@@ -7,14 +7,12 @@ import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     int day, month, year, hour, minute;
     int myday, myMonth, myYear, myHour, myMinute;
     String enteredTitle;
-    private Calendar calendar;
+    private Calendar calendar;//for notify
     private PendingIntent pendingIntent;//for the notify
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         calendar.set(Calendar.MONTH, month);
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
         //end
+
         Calendar c = Calendar.getInstance();
         hour = c.get(Calendar.HOUR);
         minute = c.get(Calendar.MINUTE);
@@ -91,35 +90,23 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         day1.setText( myday + "\n") ;
         hour1.setText( myHour + "\n") ;
         min1.setText( myMinute + "\n") ;
-
         Title1.setText(enteredTitle);
+
+
         //to use in notify
-        calendar.set(Calendar.HOUR_OF_DAY, myHour);
+        calendar.set(Calendar.HOUR, myHour);//HOUR_OF_DAY
         calendar.set(Calendar.MINUTE, myMinute);
         calendar.set(Calendar.SECOND, 0);
-        long time = calendar.getTimeInMillis();
-        Log.d("myTag", "calendar0 "+time);
         //end
+
+
     }
 
 
     public void setAlarmNotify(){
-        long time = calendar.getTimeInMillis();
-        Toast.makeText(this,"enter",Toast.LENGTH_LONG).show();
-        Log.d("myTag", "calendar "+time);
-
         Intent intent=new Intent(MainActivity.this, Alarm.class);
         PendingIntent p1=PendingIntent.getBroadcast(getApplicationContext(),0, intent,0);
         AlarmManager a=(AlarmManager)getSystemService(ALARM_SERVICE);
-        a.set(AlarmManager.RTC,System.currentTimeMillis() + time,p1);
-
-
-/*
-        Intent alertIntent = new Intent(getApplicationContext(), Alarm.class);
-        AlarmManager alarmManager = (AlarmManager) getSystemService( ALARM_SERVICE );
-
-        alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), PendingIntent.getBroadcast(getApplicationContext(), 0, alertIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT ));
-*/
+        a.set(AlarmManager.RTC,calendar.getTimeInMillis(),p1);
     }
 }
