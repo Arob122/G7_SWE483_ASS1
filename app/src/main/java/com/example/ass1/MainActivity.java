@@ -16,6 +16,8 @@ import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.allyants.notifyme.NotifyMe;
+
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
@@ -25,6 +27,8 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     int day, month, year, hour, minute;
     int myday, myMonth, myYear, myHour, myMinute;
     String enteredTitle;
+    DatePickerDialog datePickerDialog;
+    TimePickerDialog timePickerDialog;
     private Calendar calendar;//for notify
     private PendingIntent pendingIntent;//for the notify
     @Override
@@ -50,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 year = calendar.get(Calendar.YEAR);
                 month = calendar.get(Calendar.MONTH);
                 day = calendar.get(Calendar.DAY_OF_MONTH);
-                DatePickerDialog datePickerDialog = new DatePickerDialog(MainActivity.this,MainActivity.this,year, month,day);
+                 datePickerDialog = new DatePickerDialog(MainActivity.this,MainActivity.this,year, month,day);
                 datePickerDialog.show();
             }
         });
@@ -58,10 +62,10 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         btnSetAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAlarmNotify();
+                datePickerDialog.show();
             }
         });
-    }
+   }
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
         myYear = year;
@@ -78,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         hour = c.get(Calendar.HOUR);
         minute = c.get(Calendar.MINUTE);
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(MainActivity.this, MainActivity.this, hour, minute, DateFormat.is24HourFormat(this));
+         timePickerDialog = new TimePickerDialog(MainActivity.this, MainActivity.this, hour, minute, DateFormat.is24HourFormat(this));
         timePickerDialog.show();
     }
     @Override
@@ -98,6 +102,19 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         calendar.set(Calendar.MINUTE, myMinute);
         calendar.set(Calendar.SECOND, 0);
         //end
+
+        //initialize notification
+        NotifyMe notifyme=new NotifyMe.Builder(getApplicationContext())
+                .title(Title.getText().toString())
+                .color(255,0,0,255)
+                .led_color(255,255,255,255)
+                .time(calendar)
+                .addAction(new Intent(),"Snooze",false)
+                .key("Test")
+                .addAction(new Intent(),"Dismiss",true,false)
+                .addAction(new Intent(),"Done")
+                .build();
+
 
 
     }
