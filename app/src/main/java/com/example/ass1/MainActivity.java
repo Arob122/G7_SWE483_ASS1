@@ -2,11 +2,16 @@ package com.example.ass1;
 
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -15,6 +20,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.allyants.notifyme.NotifyMe;
 
@@ -23,18 +30,22 @@ import java.util.Calendar;
 public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
     TextView Title1,monnth1,day1,hour1,min1,yeear1;
     EditText Title;
-    Button Pickbutton, btnSetAlarm;
+    Button Pickbutton;
     int day, month, year, hour, minute;
     int myday, myMonth, myYear, myHour, myMinute;
     String enteredTitle;
     DatePickerDialog datePickerDialog;
     TimePickerDialog timePickerDialog;
+    public static final String CHANNEL_1_ID = "channel1";
+
+
     private Calendar calendar;//for notify
     private PendingIntent pendingIntent;//for the notify
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        calendar = Calendar.getInstance();
         super.onCreate(savedInstanceState);
+        createNotificationChannels();
+        calendar = Calendar.getInstance();
         setContentView(R.layout.activity_main);
         Title1 = findViewById(R.id.Title);
         Pickbutton = findViewById(R.id.btnPick);
@@ -45,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         min1=findViewById(R.id.min);
         yeear1=findViewById(R.id.yeear);
         enteredTitle = Title.getText().toString();
-        btnSetAlarm = findViewById(R.id.btnSetAlarm);
 
         Pickbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,12 +69,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             }
         });
 
-        btnSetAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                datePickerDialog.show();
-            }
-        });
+
    }
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -102,28 +107,30 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         calendar.set(Calendar.MINUTE, myMinute);
         calendar.set(Calendar.SECOND, 0);
         //end
-
-        //initialize notification
-        NotifyMe notifyme=new NotifyMe.Builder(getApplicationContext())
-                .title(Title.getText().toString())
-                .color(255,0,0,255)
-                .led_color(255,255,255,255)
-                .time(calendar)
-                .addAction(new Intent(),"Snooze",false)
-                .key("Test")
-                .addAction(new Intent(),"Dismiss",true,false)
-                .addAction(new Intent(),"Done")
-                .build();
-
-
-
+        setAlarmNotify();
     }
-
 
     public void setAlarmNotify(){
         Intent intent=new Intent(MainActivity.this, Alarm.class);
-        PendingIntent p1=PendingIntent.getBroadcast(getApplicationContext(),0, intent,0);
+        PendingIntent p1=PendingIntent.getBroadcast(MainActivity.this,0, intent,0);
+
+        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
+        Log.d("myTag", "This is my message inside main");
         AlarmManager a=(AlarmManager)getSystemService(ALARM_SERVICE);
         a.set(AlarmManager.RTC,calendar.getTimeInMillis(),p1);
+    }
+    private void createNotificationChannels() {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel channel1 = new NotificationChannel(
+                    CHANNEL_1_ID,
+                    "My Channel 1",
+                    NotificationManager.IMPORTANCE_HIGH
+            );
+            channel1.setDescription("This is Channel 1");
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel1);
+        }
     }
 }
