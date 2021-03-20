@@ -11,14 +11,14 @@
 
     <TextView
         android:id="@+id/Title"
-        android:layout_width="58dp"
-        android:layout_height="30dp"
+        android:layout_width="170dp"
+        android:layout_height="29dp"
         android:layout_marginStart="53dp"
         android:layout_marginTop="97dp"
         android:layout_marginEnd="54dp"
         android:layout_marginBottom="589dp"
         android:gravity="left"
-        android:text="Title"
+        android:text="Reminder Title"
         android:textColor="#717171"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,16 +26,14 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:layout_marginLeft="53dp"
-        android:layout_marginRight="54dp" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btnPick"
         android:layout_width="208dp"
         android:layout_height="40dp"
         android:layout_marginEnd="100dp"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="136dp"
         android:background="@drawable/button"
         android:text="Pick Date and TIme"
         android:visibility="visible"
@@ -44,6 +42,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <Button
+        android:id="@+id/saveBtn"
+        android:layout_width="208dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="84dp"
+        android:background="@drawable/button"
+        android:text="Save"
+        android:visibility="visible"
+        app:backgroundTint="@color/purple_500"
+        app:iconTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <EditText
         android:id="@+id/textE"
@@ -154,5 +165,48 @@
         app:layout_constraintVertical_bias="0.675"
         android:layout_marginLeft="220dp"
         android:layout_marginRight="132dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="151dp"
+        android:layout_height="26dp"
+        android:text="Choose the importance "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.203"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.225" />
+
+    <Button
+        android:id="@+id/highImportance"
+        android:layout_width="84dp"
+        android:layout_height="36dp"
+        android:text="High"
+        android:textColor="#3C2D41"
+        android:textSize="11dp"
+        app:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.623"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.214" />
+
+
+    <Button
+        android:id="@+id/lowImportance"
+        android:layout_width="84dp"
+        android:layout_height="36dp"
+        android:text="Low"
+        android:textColor="#3C2D41"
+        android:textSize="11dp"
+        app:backgroundTint="#00FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.214" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
