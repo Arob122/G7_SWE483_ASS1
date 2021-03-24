@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             @Override
             public void onClick(View v) {
 
-                Log.d("myTag", "This is saveBtn importance " + importence);
                 if(Title.getText().toString().equals("")){
                     Toast.makeText(getApplicationContext(), "Empty Title, please fill title", Toast.LENGTH_LONG).show();
                     return;
@@ -145,7 +144,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         super.onResume();
         setData();
-        Log.d("myTag", "in onResume  ");
+
     }
 
 
@@ -154,7 +153,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     {
         super.onNewIntent(intent);
         setIntent(intent);
-        Log.d("myTag", "in onNewIntent  ");
+
     }
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
@@ -174,7 +173,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
         timePickerDialog = new TimePickerDialog(MainActivity.this, MainActivity.this, hour, minute, DateFormat.is24HourFormat(this));
         timePickerDialog.show();
-        Log.d("myTag", "in onDateSet calendar.getTimeInMillis() "+calendar.getTime());
+
     }
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -194,9 +193,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         calendar.set(Calendar.SECOND, 0);
         //end
 
-        Log.d("myTag", "in onTimeSet calendar.getTimeInMillis() "+calendar.getTime());
-        Log.d("myTag", "in onTimeSet myday "+myday);
-        Log.d("myTag", "in onTimeSet myHour "+myHour);
 
     }
 
@@ -228,23 +224,11 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
 
 
 
-        Log.d("myTag", "This is my message inside main "+calendar.getTimeInMillis());
+
         AlarmManager a=(AlarmManager)getSystemService(ALARM_SERVICE);
         a.set(AlarmManager.RTC,calendar.getTimeInMillis(),p1);
 
-        /* Log.d("myTag", "in setAlarmNotify first line");
 
-        Log.d("myTag", "in setAlarmNotify() importence "+importence);
-        //PendingIntent p1=PendingIntent.getBroadcast(MainActivity.this,0, intent,0);
-        PendingIntent p1=PendingIntent.getActivity(MainActivity.this,1, intent,PendingIntent.FLAG_UPDATE_CURRENT);
-
-        //intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        pendingIntent = PendingIntent.getActivity(MainActivity.this, 0, intent, 0);
-        Log.d("myTag", "This is my message inside main");
-        AlarmManager a=(AlarmManager)getSystemService(ALARM_SERVICE);
-        a.set(AlarmManager.RTC,calendar.getTimeInMillis(),p1);
-        Log.d("myTag", "in setAlarmNotify calendar.getTimeInMillis() "+calendar.getTime());
-        //a.set(AlarmManager.RTC,1000,p1);*/
     }
     private void createNotificationChannels(){
 
@@ -275,23 +259,14 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
         if (extras != null) {
-            Log.d("myTag", "in extras");
             title = extras.getString("title");
-            Log.d("myTag", "in setData extras title "+title);
             msg = extras.getString("msg");
-            Log.d("myTag", "in setData extras msg "+msg);
             imp = extras.getString("importence");
-            Log.d("myTag", "in setData extras importence "+imp);
             myYear = extras.getInt("myYear");
-            Log.d("myTag", "in setData extras myYear "+myYear);
             myMonth = extras.getInt("myMonth");
-            Log.d("myTag", "in setData extras myMonth "+myMonth);
             myday = extras.getInt("myday");
-            Log.d("myTag", "in setData extras myday "+myday);
             myHour = extras.getInt("myHour");
-            Log.d("myTag", "in setData extras myHour "+myHour);
             myMinute = extras.getInt("myMinute");
-            Log.d("myTag", "in setData extras myMinute "+myMinute);
 
             //The key argument here must match that used in the other activity
             yeear1.setText(myYear+ "\n" );

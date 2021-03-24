@@ -30,34 +30,21 @@ public class Alarm extends BroadcastReceiver {
         String title = "", msg = "", imp = "";
         int myYear=0, myMonth=0, myday=0, myHour=0, myMinute=0;
         int rand = 0;
-
-        Log.d("myTag", "This is my message");
-
         int random=getRandom();
 
 
         Bundle extras = inten.getExtras();
         if (extras != null) {
-            Log.d("myTag", "in extras");
             title = extras.getString("title");
-            Log.d("myTag", "in extras title "+title);
             msg = extras.getString("msg");
-            Log.d("myTag", "in extras msg "+msg);
             imp = extras.getString("importence");
-            Log.d("myTag", "in extras importence "+imp);
             rand = extras.getInt("random");
-            Log.d("myTag", "in extras random "+rand);
             myYear = extras.getInt("myYear");
-            Log.d("myTag", "in extras myYear "+myYear);
             myMonth = extras.getInt("myMonth");
-            Log.d("myTag", "in extras myMonth "+myMonth);
             myday = extras.getInt("myday");
-            Log.d("myTag", "in extras myday "+myday);
             myHour = extras.getInt("myHour");
-            Log.d("myTag", "in extras myHour "+myHour);
             myMinute = extras.getInt("myMinute");
-            Log.d("myTag", "in extras myMinute "+myMinute);
-            
+
             //The key argument here must match that used in the other activity
         }
         
@@ -78,7 +65,6 @@ public class Alarm extends BroadcastReceiver {
 
 
         if (imp.equals("high")) {
-            Log.d("myTag", "in class Alarm high ");
             Notification notification = new NotificationCompat.Builder(context, MainActivity.CHANNEL_1_ID)
                     .setSmallIcon(R.drawable.ic_high_alarm)
                     .setContentTitle(title)
@@ -92,7 +78,6 @@ public class Alarm extends BroadcastReceiver {
 
 
         }else {
-            Log.d("myTag", "in class Alarm low ");
             Notification notification = new NotificationCompat.Builder(context, MainActivity.CHANNEL_2_ID)
                     .setSmallIcon(R.drawable.ic_low_alarm_24)
                     .setContentTitle(title)
