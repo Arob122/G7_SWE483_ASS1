@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                     return;
                 }
                 setAlarmNotify();
-                Toast.makeText(getApplicationContext(), "Notification saved", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Reminder saved", Toast.LENGTH_LONG).show();
                 yeear1.setText("");
                 monnth1.setText("");
                 day1.setText("");
@@ -110,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
                 min1.setText("");
                 Title.setText("");
                 detais.setText("");
+                importence="";
 
 
                 lowImportance.setBackgroundColor(Color.parseColor("#00FFFFFF"));
@@ -184,7 +185,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         day1.setText( myday + "\n") ;
         hour1.setText( myHour + "\n") ;
         min1.setText( myMinute + "\n") ;
-        Title1.setText(enteredTitle);
+        //Title.setText(enteredTitle);
 
 
         //to use in notify

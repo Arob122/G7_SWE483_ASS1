@@ -49,7 +49,7 @@
         android:layout_height="35dp"
         android:background="@drawable/button"
         android:text="Pick Date and TIme"
-        android:textSize="15dp"
+        android:textSize="14sp"
         android:visibility="visible"
         app:backgroundTint="@color/purple_500"
         app:iconTint="#00FFFFFF"
