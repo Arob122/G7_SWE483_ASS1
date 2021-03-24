@@ -11,76 +11,98 @@
 
     <TextView
         android:id="@+id/Title"
-        android:layout_width="170dp"
+        android:layout_width="111dp"
         android:layout_height="29dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="97dp"
         android:layout_marginEnd="54dp"
-        android:layout_marginBottom="589dp"
+
         android:gravity="left"
         android:text="Reminder Title"
         android:textColor="#717171"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.215"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.119" />
+
+    <TextView
+        android:id="@+id/Detaill"
+        android:layout_width="111dp"
+        android:layout_height="29dp"
+        android:layout_marginEnd="54dp"
+
+        android:gravity="left"
+        android:text="Reminder Detail"
+        android:textColor="#717171"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.215"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.179" />
 
     <Button
         android:id="@+id/btnPick"
-        android:layout_width="208dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="136dp"
+        android:layout_width="202dp"
+        android:layout_height="35dp"
         android:background="@drawable/button"
         android:text="Pick Date and TIme"
+        android:textSize="15dp"
         android:visibility="visible"
         app:backgroundTint="@color/purple_500"
         app:iconTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.823" />
 
     <Button
         android:id="@+id/saveBtn"
-        android:layout_width="208dp"
-        android:layout_height="40dp"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="84dp"
+        android:layout_width="202dp"
+        android:layout_height="35dp"
         android:background="@drawable/button"
         android:text="Save"
         android:visibility="visible"
         app:backgroundTint="@color/purple_500"
         app:iconTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.887" />
 
     <EditText
         android:id="@+id/textE"
-        android:layout_width="286dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="110dp"
-        android:layout_marginEnd="104dp"
+        android:layout_width="218dp"
+        android:layout_height="44dp"
         android:hint="Write the Reminder title"
+        android:textColorHint="#717171"
         android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.854"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3"
-        android:layout_marginLeft="53dp"
-        android:layout_marginRight="104dp" />
+        app:layout_constraintVertical_bias="0.1" />
 
     <EditText
         android:id="@+id/detail"
-        android:layout_width="141dp"
-        android:layout_height="52dp"
-        android:layout_marginStart="252dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="215dp"
+        android:layout_height="42dp"
         android:hint="Write the Reminder detail"
+        android:textColorHint="#717171"
         android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.836"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.162" />
 
     <TextView
         android:id="@+id/monnth"
@@ -177,6 +199,7 @@
         android:layout_marginLeft="220dp"
         android:layout_marginRight="132dp" />
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="151dp"
@@ -187,7 +210,7 @@
         app:layout_constraintHorizontal_bias="0.203"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintVertical_bias="0.243" />
 
     <Button
         android:id="@+id/highImportance"
@@ -199,11 +222,10 @@
         app:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.623"
+        app:layout_constraintHorizontal_bias="0.657"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
-
+        app:layout_constraintVertical_bias="0.246" />
 
     <Button
         android:id="@+id/lowImportance"
@@ -215,9 +237,9 @@
         app:backgroundTint="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.214" />
+        app:layout_constraintVertical_bias="0.246" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
